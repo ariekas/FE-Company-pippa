@@ -11,7 +11,6 @@ export default function Home() {
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const [loading, setLoading] = useState(true);
 
-
   // Features data
   const features = [
     {
@@ -35,8 +34,8 @@ export default function Home() {
   const initialPhotos = [
     {
       id: 1,
-      src: "https://placehold.co/800x1200.png?text=Photo+1",
-      width: 800,
+      src: "https://placehold.co/2000x1000.png?text=Photo+1",
+      width: 2000,
       height: 1200,
       alt: "Photo 1",
     },
@@ -143,7 +142,6 @@ export default function Home() {
   }, []);
   return (
     <div className="bg-white">
-      {/* hero page */}
       <div className="bg-[#F5F8FE] p-5 -full">
         <div className="container mx-auto flex items-center justify-between ">
           <div className="max-w-lg text-gray-700 flex flex-col gap-3">
@@ -182,8 +180,18 @@ export default function Home() {
           })}
         </div>
       </div>
-
-      <div className="container mx-auto mb-10">
+      <div className="flex items-center justify-between container mx-auto mb-10">
+        <div className="flex flex-col text-gray-700">
+          <h1 className="text-3xl font-semibold">About Us</h1>
+          <p className="text-justify max-w-4xl text-lg font-light">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque est culpa animi corporis rerum nemo quis id repellat ut facilis natus ipsum voluptate ex, aliquam architecto saepe voluptatibus officia veniam, totam mollitia, reiciendis vitae placeat accusamus. Dignissimos, numquam tenetur consectetur voluptates ullam a! Id dicta praesentium reiciendis enim doloremque ipsam.</p>
+          <button className="mt-4 text-white font-light hover:bg-[#0052DA] transition-colors duration-300 max-w-xs py-2.5 rounded-full bg-[#0052DA]/70 text-sm">More about us</button>
+        </div>
+        <div className="max-w-md">
+          <img src="https://img.freepik.com/free-vector/teamwork-concept-landing-page_52683-20165.jpg?uid=R138606102&ga=GA1.1.51738470.1741326986&semt=ais_hybrid&w=740" alt="" className="w-full" />
+        </div>
+      </div>
+      <div className="bg-[#F5F8FE] mb-10 py-16">
+      <div className="container mx-auto  ">
         <div className="text-gray-700 flex flex-col items-center justify-center gap-3 mb-5">
           <h1 className="text-4xl font-bold">Our Services</h1>
           <p className="text-lg font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -211,29 +219,28 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="container mx-auto px-20 mb-10">
-        <div className="flex flex-col gap-3 items-center mb-5">
-          <h1 className="text-3xl font-bold">Our Latest Project</h1>
-          <p className="text-lg font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, neque?</p>
-
-        </div>
-        {loading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-          </div>
-        ) : (
-          <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-5 gap-4">
-            {photos.map((photo) => (
-              <PhotoCard
-                key={photo.id}
-                photo={photo}
-                onClick={handlePhotoClick}
-              />
-            ))}
-          </div>
-        )}
       </div>
-
+        <div className=" px-20 container mx-auto">
+          <div className="flex flex-col gap-3 items-center mb-5 ">
+            <h1 className="text-3xl font-bold">Our Latest Project</h1>
+            <p className="text-lg font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, neque?</p>
+          </div>
+          {loading ? (
+            <div className="flex justify-center items-center h-64">
+              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            </div>
+          ) : (
+            <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-5 gap-4 ">
+              {photos.map((photo) => (
+                <PhotoCard
+                  key={photo.id}
+                  photo={photo}
+                  onClick={handlePhotoClick}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       {selectedPhoto && (
         <PhotoModal photo={selectedPhoto} onClose={closeModal} />
       )}
@@ -243,7 +250,7 @@ export default function Home() {
 
 function ServiceCard({ title, description, image }) {
   return (
-    <div className="group p-4 rounded-2xl border border-gray-100 shadow-sm transition-transform duration-300 hover:scale-105">
+    <div className="group p-4 rounded-2xl border border-gray-100 shadow-sm transition-transform duration-300 hover:scale-105 bg-white">
       <div className="overflow-hidden rounded-2xl">
         <img
           src={image}
@@ -251,7 +258,7 @@ function ServiceCard({ title, description, image }) {
           className="w-full mb-4 rounded-2xl transition-transform duration-300 transform group-hover:scale-110"
         />
       </div>
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      <h3 className="text-xl font-bold mt-2">{title}</h3>
       <p className="text-gray-600">{description}</p>
       <button className="mt-4 text-[#0052DA] font-semibold hover:underline">
         Learn more →
@@ -260,8 +267,6 @@ function ServiceCard({ title, description, image }) {
   );
 }
 
-
-// Komponen PhotoCard untuk kartu foto
 const PhotoCard = ({ photo }) => {
   return (
     <div
