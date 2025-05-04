@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from "react";
+import { Star } from 'lucide-react';
 
 
 // import { useState, useEffect } from 'react';
@@ -139,6 +140,77 @@ export default function Home() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+
+  const reviews = [
+    {
+      id: 1,
+      name: 'Andi Wijaya',
+      position: 'CEO, Tech Innovate',
+      content: 'Layanan yang luar biasa! Tim sangat profesional dan responsif terhadap kebutuhan kami. Tidak ragu untuk merekomendasikan kepada siapa pun yang mencari solusi berkualitas.',
+      rating: 5,
+      image: 'https://placehold.co/100x100.png?text=Photo+1'
+    },
+    {
+      id: 2,
+      name: 'Siti Rahma',
+      position: 'Marketing Director, Brand Global',
+      content: 'Saya sangat terkesan dengan kualitas produk dan layanan pelanggan yang diberikan. Mereka benar-benar memahami kebutuhan bisnis kami dan memberikan solusi yang tepat.',
+      rating: 5,
+      image: 'https://placehold.co/100x100.png?text=Photo+2'
+    },
+    {
+      id: 3,
+      name: 'Budi Santoso',
+      position: 'CTO, Digital Solution',
+      content: 'Bekerja sama dengan tim ini adalah keputusan terbaik yang kami buat. Mereka tidak hanya memberikan produk berkualitas tinggi tetapi juga mendukung kami di setiap langkah.',
+      rating: 4,
+      image: 'https://placehold.co/100x100.png?text=Photo+3'
+    },
+    {
+      id: 4,
+      name: 'Dewi Anggraini',
+      position: 'COO, Startup Ventures',
+      content: 'Pengalaman yang sangat memuaskan! Tim mereka sangat berpengetahuan dan membantu dalam menyelesaikan masalah kami dengan cepat dan efisien.',
+      rating: 5,
+      image: 'https://placehold.co/100x100.png?text=Photo+4'
+    },
+    {
+      id: 5,
+      name: 'Rudi Hartono',
+      position: 'IT Manager, Enterprise Corp',
+      content: 'Produk mereka telah membantu kami meningkatkan efisiensi dan produktivitas. Dukungan teknis mereka juga sangat responsif dan membantu.',
+      rating: 4,
+      image: 'https://placehold.co/100x100.png?text=Photo+5'
+    }
+  ];
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto slide functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === reviews.length - 1 ? 0 : prev + 1));
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [reviews.length]);
+
+  // Render stars based on rating
+  const renderStars = (rating) => {
+    return Array(5).fill(0).map((_, index) => (
+      <Star
+        key={index}
+        size={16}
+        fill={index < rating ? "#FBBF24" : "none"}
+        stroke={index < rating ? "#FBBF24" : "#CBD5E0"}
+      />
+    ));
+  };
+
+  // Progress indicator calculation
+  const progressPercentage = ((currentSlide + 1) / reviews.length) * 100;
+
   return (
     <div className="bg-white">
       <div className="bg-[#F5F8FE] p-5 -full">
@@ -268,7 +340,68 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className="w-full container mx-auto">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-5">
+            <h2 className="text-4xl font-bold text-gray-700 mb-4">What People’s Say</h2>
+            <div className="w-24 h-1 bg-[#0D5BDC] mx-auto mb-6"></div>
+            <p className="text-gray-700 max-w-2xl mx-auto">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta possimus alias soluta qui! Ratione at neque error eius explicabo reprehenderit!
+            </p>
+          </div>
+          <div className="relative">
+            <div className="overflow-hidden rounded-2xl shadow-2xl bg-white/5 backdrop-blur-lg border border-white/10">
+              {/* Progress bar */}
+              <div className="h-1 bg-gray-200">
+                <div
+                  className="h-full bg-[#0D5BDC] transition-all duration-500 ease-out"
+                  style={{ width: `${progressPercentage}%` }}
+                ></div>
+              </div>
 
+              <div
+                className="flex transition-transform duration-1000 ease-in-out "
+                style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+              >
+                {reviews.map((review) => (
+                  <div key={review.id} className="w-full flex-shrink-0 p-8 ">
+                    <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+                      <div className="flex-shrink-0">
+                        <div className="h-20 w-20 rounded-full overflow-hidden border-4 border-purple-300/20">
+                          <img src={review.image} alt={review.name} className="w-full h-full object-cover" />
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex mb-4">
+                          {renderStars(review.rating)}
+                        </div>
+                        <blockquote className="text-gray-700 text-lg md:text-xl mb-6 italic font-light">
+                          "{review.content}"
+                        </blockquote>
+                        <div className="flex flex-col">
+                          <h3 className="font-bold text-lg text-gray-700">{review.name}</h3>
+                          <p className="text-gray-700 text-sm">{review.position}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-center py-4 gap-1.5">
+                {reviews.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`h-1 rounded-full transition-all duration-300 ${index === currentSlide
+                      ? 'w-8 bg-blue-400'
+                      : 'w-2 bg-blue-700'
+                      }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
