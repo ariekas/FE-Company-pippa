@@ -441,7 +441,116 @@ export default function Home() {
           </div>
         </div>
       </div>
-      
+      <footer className="bg-[#0052DA] text-white">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {/* Company Info */}
+          <div className="flex flex-col">
+            <h3 className="text-xl font-bold mb-4">Company Name</h3>
+            <p className="text-gray-200 mb-6">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.
+            </p>
+            <div className="flex space-x-3">
+              <a href="#" className="bg-[#0D5BDC] p-2 rounded-full hover:bg-white hover:text-[#0052DA] transition-colors duration-300">
+                <Facebook size={18} />
+              </a>
+              <a href="#" className="bg-[#0D5BDC] p-2 rounded-full hover:bg-white hover:text-[#0052DA] transition-colors duration-300">
+                <Twitter size={18} />
+              </a>
+              <a href="#" className="bg-[#0D5BDC] p-2 rounded-full hover:bg-white hover:text-[#0052DA] transition-colors duration-300">
+                <Instagram size={18} />
+              </a>
+              <a href="#" className="bg-[#0D5BDC] p-2 rounded-full hover:bg-white hover:text-[#0052DA] transition-colors duration-300">
+                <Linkedin size={18} />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              {['Home', 'About Us', 'Services', 'Projects', 'Blog', 'Contact'].map((item) => (
+                <li key={item} className="flex items-center group">
+                  <ChevronRight size={16} className="mr-2 group-hover:translate-x-1 transition-transform" />
+                  <a href="#" className="hover:text-gray-200 transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="text-xl font-bold mb-4">Our Services</h3>
+            <ul className="space-y-2">
+              {['Maintenance', 'Repairs', 'Installation', 'Consultation', 'Emergency Service'].map((item) => (
+                <li key={item} className="flex items-center group">
+                  <ChevronRight size={16} className="mr-2 group-hover:translate-x-1 transition-transform" />
+                  <a href="#" className="hover:text-gray-200 transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
+            <ul className="space-y-4">
+              <li className="flex items-start">
+                <MapPin className="mr-3 flex-shrink-0 mt-1" size={18} />
+                <span>123 Street Name, City, State, Country</span>
+              </li>
+              <li className="flex items-center">
+                <Phone className="mr-3 flex-shrink-0" size={18} />
+                <span>+1 234 567 8900</span>
+              </li>
+              <li className="flex items-center">
+                <Mail className="mr-3 flex-shrink-0" size={18} />
+                <span>info@example.com</span>
+              </li>
+            </ul>
+            <div className="mt-6">
+              <div className="w-full bg-[#0D5BDC] rounded-full h-12 relative overflow-hidden">
+                <input 
+                  type="email" 
+                  placeholder="Your email" 
+                  className="w-full h-full bg-transparent border-none pl-4 pr-24 text-white placeholder-gray-300 focus:outline-none"
+                />
+                <button className="absolute right-0 top-0 h-full bg-white text-[#0052DA] px-4 font-medium rounded-r-full hover:bg-gray-100 transition-colors">
+                  Subscribe
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="bg-[#0D5BDC] py-4">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-gray-200">
+              © {new Date().getFullYear()} Company Name. All Rights Reserved.
+            </p>
+            <div className="flex space-x-4 mt-3 md:mt-0">
+              <a href="#" className="text-sm text-gray-200 hover:text-white transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="text-sm text-gray-200 hover:text-white transition-colors">
+                Terms of Service
+              </a>
+              <a href="#" className="text-sm text-gray-200 hover:text-white transition-colors">
+                Cookies Policy
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
     </div>
   );
 }
