@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from "react";
-import { Star } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin, ChevronRight, Star } from 'lucide-react';
+
 
 
 // import { useState, useEffect } from 'react';
@@ -254,6 +255,7 @@ export default function Home() {
       <div className="flex items-center justify-between container mx-auto mb-10">
         <div className="flex flex-col text-gray-700">
           <h1 className="text-3xl font-semibold">About Us</h1>
+          <div className="w-24 h-1 bg-[#0D5BDC] mb-6"></div>
           <p className="text-justify max-w-4xl text-lg font-light">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque est culpa animi corporis rerum nemo quis id repellat ut facilis natus ipsum voluptate ex, aliquam architecto saepe voluptatibus officia veniam, totam mollitia, reiciendis vitae placeat accusamus. Dignissimos, numquam tenetur consectetur voluptates ullam a! Id dicta praesentium reiciendis enim doloremque ipsam.</p>
           <button className="mt-4 text-white font-light hover:bg-[#0052DA] transition-colors duration-300 max-w-xs py-2.5 rounded-full bg-[#0052DA]/70 text-sm">More about us</button>
         </div>
@@ -265,6 +267,7 @@ export default function Home() {
         <div className="container mx-auto  ">
           <div className="text-gray-700 flex flex-col items-center justify-center gap-3 mb-5">
             <h1 className="text-4xl font-bold">Our Services</h1>
+            <div className="w-24 h-1 bg-[#0D5BDC] mx-auto mb-6"></div>
             <p className="text-lg font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -291,9 +294,10 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className=" px-20 container mx-auto">
+      <div className=" px-20 container mx-auto mb-10">
         <div className="flex flex-col gap-3 items-center mb-5 ">
           <h1 className="text-3xl font-bold">Our Latest Project</h1>
+          <div className="w-24 h-1 bg-[#0D5BDC] mx-auto mb-6"></div>
           <p className="text-lg font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, neque?</p>
         </div>
         {loading ? (
@@ -340,7 +344,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="w-full container mx-auto">
+      <div className="w-full container mx-auto mb-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-5">
             <h2 className="text-4xl font-bold text-gray-700 mb-4">What People’s Say</h2>
@@ -350,7 +354,7 @@ export default function Home() {
             </p>
           </div>
           <div className="relative">
-            <div className="overflow-hidden rounded-2xl shadow-2xl bg-white/5 backdrop-blur-lg border border-white/10">
+            <div className="overflow-hidden rounded-2xl shadow-sm bg-white/5 backdrop-blur-lg border border-white/10">
               {/* Progress bar */}
               <div className="h-1 bg-gray-200">
                 <div
@@ -358,7 +362,6 @@ export default function Home() {
                   style={{ width: `${progressPercentage}%` }}
                 ></div>
               </div>
-
               <div
                 className="flex transition-transform duration-1000 ease-in-out "
                 style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -402,6 +405,43 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className="bg-[#F5F8FE]  py-16">
+        <div className="container mx-auto  ">
+          <div className="text-gray-700 flex flex-col items-center justify-center gap-3 mb-5">
+            <h1 className="text-4xl font-bold">Latest News & Blog</h1>
+            <div className="w-24 h-1 bg-[#0D5BDC] mx-auto mb-6"></div>
+            <p className="text-lg font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+            <BlogCard
+              title="Maintenance"
+              description="Regular maintenance to keep your systems running smoothly and prevent future issues."
+              image={"https://img.freepik.com/free-photo/plumbing-repair-service_181624-27146.jpg?uid=R138606102&ga=GA1.1.51738470.1741326986&semt=ais_hybrid&w=740"}
+            />
+             <BlogCard
+              title="Maintenance"
+              description="Regular maintenance to keep your systems running smoothly and prevent future issues."
+              image={"https://img.freepik.com/free-photo/plumbing-repair-service_181624-27146.jpg?uid=R138606102&ga=GA1.1.51738470.1741326986&semt=ais_hybrid&w=740"}
+            />
+             <BlogCard
+              title="Maintenance"
+              description="Regular maintenance to keep your systems running smoothly and prevent future issues."
+              image={"https://img.freepik.com/free-photo/plumbing-repair-service_181624-27146.jpg?uid=R138606102&ga=GA1.1.51738470.1741326986&semt=ais_hybrid&w=740"}
+            />
+             <BlogCard
+              title="Maintenance"
+              description="Regular maintenance to keep your systems running smoothly and prevent future issues."
+              image={"https://img.freepik.com/free-photo/plumbing-repair-service_181624-27146.jpg?uid=R138606102&ga=GA1.1.51738470.1741326986&semt=ais_hybrid&w=740"}
+            />
+             <BlogCard
+              title="Maintenance"
+              description="Regular maintenance to keep your systems running smoothly and prevent future issues."
+              image={"https://img.freepik.com/free-photo/plumbing-repair-service_181624-27146.jpg?uid=R138606102&ga=GA1.1.51738470.1741326986&semt=ais_hybrid&w=740"}
+            />
+          </div>
+        </div>
+      </div>
+      
     </div>
   );
 }
@@ -421,6 +461,40 @@ function ServiceCard({ title, description, image }) {
       <button className="mt-4 text-[#0052DA] font-semibold hover:underline">
         Learn more →
       </button>
+    </div>
+  );
+}
+
+function BlogCard({ title, description, image }) {
+  return (
+    <div className="group rounded-2xl border border-gray-100 shadow-sm transition-transform duration-300 hover:scale-105 bg-white">
+        <img
+          src={image}
+          alt={title}
+          className="w-full rounded-2xl rounded-b-none"
+        />
+      <div className="flex flex-col">
+        <div className="flex flex-col gap-2 p-5">
+        <div className="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#0052DA" d="M12 20a8 8 0 0 0 8-8a8 8 0 0 0-8-8a8 8 0 0 0-8 8a8 8 0 0 0 8 8m0-18a10 10 0 0 1 10 10a10 10 0 0 1-10 10C6.47 22 2 17.5 2 12A10 10 0 0 1 12 2m.5 5v5.25l4.5 2.67l-.75 1.23L11 13V7z" /></svg>
+          <p className="text-[#0052DA] font-semibold text-sm">01 Januari 2029</p>
+        </div>
+        <h3 className="text-xl font-bold mt-2 ">{title}</h3>
+        <div className="flex items-center mt-4">
+          <div className="flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#0052DA" d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 8v-2.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20zm2-2h12v-.8q0-.275-.137-.5t-.363-.35q-1.35-.675-2.725-1.012T12 15t-2.775.338T6.5 16.35q-.225.125-.363.35T6 17.2zm6-8q.825 0 1.413-.587T14 8t-.587-1.412T12 6t-1.412.588T10 8t.588 1.413T12 10m0 8" /></svg>
+            <p>Ari eka</p>
+          </div>
+          <div className="bg-gray-700 h-[2px] w-[2rem]  transform rotate-90"></div>
+          <div className="flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#0052DA" d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 8v-2.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20zm2-2h12v-.8q0-.275-.137-.5t-.363-.35q-1.35-.675-2.725-1.012T12 15t-2.775.338T6.5 16.35q-.225.125-.363.35T6 17.2zm6-8q.825 0 1.413-.587T14 8t-.587-1.412T12 6t-1.412.588T10 8t.588 1.413T12 10m0 8" /></svg>
+            <p>Comments</p>
+            <p>(0)</p>
+          </div>
+        </div>
+        </div>
+        
+      </div>
     </div>
   );
 }
